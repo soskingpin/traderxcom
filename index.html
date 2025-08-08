@@ -1,0 +1,595 @@
+><!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TraderX FX - Elite Trading</title>
+    <style>
+        /* Ultra-Modern Trading UI */
+        :root {
+            --neon-orange: #FF5F1F;
+            --neon-green: #00FF7F;
+            --neon-blue: #00B4FF;
+            --neon-purple: #A020F0;
+            --dark: #0a0a12;
+            --darker: #050508;
+            --card-bg: rgba(20, 20, 30, 0.7);
+            --text-light: #ffffff;
+        }
+
+        body {
+            font-family: 'Rajdhani', 'Montserrat', sans-serif;
+            margin: 0;
+            padding: 0;
+            color: var(--text-light);
+            min-height: 100vh;
+            overflow-x: hidden;
+            background: var(--darker);
+        }
+
+        /* Animated Background */
+        #particles-js {
+            position: fixed;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            background: linear-gradient(135deg, #050508 0%, #12121a 100%);
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+            position: relative;
+        }
+
+        /* Glowing Header */
+        header {
+            text-align: center;
+            padding: 40px 0;
+            margin-bottom: 30px;
+            position: relative;
+        }
+
+        .logo {
+            font-size: 3.5rem;
+            font-weight: 700;
+            background: linear-gradient(90deg, var(--neon-orange), var(--neon-green));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            text-shadow: 0 0 20px rgba(0, 255, 127, 0.3);
+            letter-spacing: 3px;
+            margin-bottom: 15px;
+            animation: glow 2s ease-in-out infinite alternate;
+        }
+
+        @keyframes glow {
+            from { text-shadow: 0 0 10px rgba(0, 255, 127, 0.3); }
+            to { text-shadow: 0 0 20px rgba(0, 255, 127, 0.6), 0 0 30px rgba(255, 95, 31, 0.4); }
+        }
+
+        .tagline {
+            font-size: 1.5rem;
+            color: var(--neon-blue);
+            letter-spacing: 2px;
+            margin-bottom: 30px;
+            text-transform: uppercase;
+        }
+
+        /* Cyberpunk Cards */
+        .grid-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 30px;
+            margin-bottom: 60px;
+        }
+
+        .card {
+            background: var(--card-bg);
+            border-radius: 12px;
+            padding: 30px;
+            border: 1px solid rgba(0, 180, 255, 0.2);
+            transition: all 0.4s ease;
+            position: relative;
+            overflow: hidden;
+            backdrop-filter: blur(10px);
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+        }
+
+        .card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, var(--neon-orange), var(--neon-green));
+        }
+
+        .card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 40px rgba(0, 180, 255, 0.2);
+            border-color: var(--neon-blue);
+        }
+
+        .card-title {
+            font-size: 1.6rem;
+            color: var(--neon-green);
+            margin-bottom: 20px;
+            font-weight: 700;
+            position: relative;
+            display: inline-block;
+        }
+
+        .card-title::after {
+            content: '';
+            position: absolute;
+            bottom: -8px;
+            left: 0;
+            width: 50px;
+            height: 3px;
+            background: var(--neon-orange);
+        }
+
+        .card-price {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin: 25px 0;
+            color: var(--neon-orange);
+            text-shadow: 0 0 10px rgba(255, 95, 31, 0.3);
+        }
+
+        .card-price span {
+            font-size: 1rem;
+            color: var(--neon-blue);
+            display: block;
+            margin-top: 5px;
+        }
+
+        .card-desc {
+            margin-bottom: 30px;
+            line-height: 1.7;
+            color: rgba(255, 255, 255, 0.8);
+        }
+
+        /* Holographic Buttons */
+        .btn {
+            display: inline-block;
+            padding: 14px 35px;
+            border-radius: 6px;
+            font-weight: 700;
+            text-decoration: none;
+            transition: all 0.4s;
+            text-align: center;
+            cursor: pointer;
+            border: none;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            position: relative;
+            overflow: hidden;
+            z-index: 1;
+        }
+
+        .btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(45deg, var(--neon-orange), var(--neon-green), var(--neon-blue));
+            background-size: 200% 200%;
+            z-index: -1;
+            transition: all 0.4s;
+            animation: gradientShift 3s ease infinite;
+        }
+
+        @keyframes gradientShift {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        .btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 25px rgba(0, 180, 255, 0.4);
+        }
+
+        .btn:hover::before {
+            opacity: 0.9;
+        }
+
+        /* Performance Display */
+        .performance-card {
+            text-align: center;
+            padding: 40px;
+            margin-bottom: 60px;
+            background: rgba(0, 0, 0, 0.3);
+            border-radius: 16px;
+            border: 1px solid var(--neon-blue);
+            box-shadow: 0 0 30px rgba(0, 180, 255, 0.1);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .performance-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(45deg, 
+                transparent 0%, 
+                rgba(0, 180, 255, 0.05) 50%, 
+                transparent 100%);
+            animation: scanline 8s linear infinite;
+        }
+
+        @keyframes scanline {
+            0% { transform: translateY(-100%); }
+            100% { transform: translateY(100%); }
+        }
+
+        .profit {
+            font-size: 3.5rem;
+            color: var(--neon-green);
+            margin: 20px 0;
+            font-weight: 700;
+            text-shadow: 0 0 15px rgba(0, 255, 127, 0.4);
+        }
+
+        .growth {
+            font-size: 1.8rem;
+            color: var(--neon-orange);
+            font-weight: 600;
+        }
+
+        /* Social Links */
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 25px;
+            margin: 40px 0;
+        }
+
+        .social-icon {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 24px;
+            transition: all 0.4s;
+            position: relative;
+            overflow: hidden;
+            border: 2px solid transparent;
+        }
+
+        .social-icon::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(255, 255, 255, 0.1);
+            z-index: -1;
+            transition: all 0.4s;
+        }
+
+        .social-icon:hover {
+            transform: translateY(-5px) scale(1.1);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+        }
+
+        .tiktok { color: #000; background: #69C9D0; }
+        .whatsapp { color: #fff; background: #25D366; }
+        .instagram { 
+            background: linear-gradient(45deg, 
+                #f09433 0%, 
+                #e6683c 25%, 
+                #dc2743 50%, 
+                #cc2366 75%, 
+                #bc1888 100%); 
+            color: white;
+        }
+
+        .social-icon:hover::before {
+            background: rgba(255, 255, 255, 0.2);
+        }
+
+        /* Footer */
+        footer {
+            text-align: center;
+            padding: 50px 0;
+            margin-top: 80px;
+            border-top: 1px solid rgba(0, 180, 255, 0.2);
+            position: relative;
+        }
+
+        footer::before {
+            content: '';
+            position: absolute;
+            top: -1px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 200px;
+            height: 3px;
+            background: linear-gradient(90deg, var(--neon-orange), var(--neon-green));
+        }
+
+        /* Modal Styles */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.9);
+            z-index: 10000;
+            overflow-y: auto;
+        }
+
+        .modal-content {
+            background: var(--dark);
+            margin: 5% auto;
+            padding: 40px;
+            border-radius: 16px;
+            width: 90%;
+            max-width: 600px;
+            position: relative;
+            border: 1px solid var(--neon-blue);
+            box-shadow: 0 0 50px rgba(0, 180, 255, 0.2);
+            animation: modalFadeIn 0.6s ease-out;
+        }
+
+        @keyframes modalFadeIn {
+            from { opacity: 0; transform: translateY(-50px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .close-modal {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            color: var(--neon-orange);
+            font-size: 30px;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .close-modal:hover {
+            transform: rotate(90deg);
+            color: var(--neon-green);
+        }
+
+        .modal-title {
+            color: var(--neon-green);
+            margin-bottom: 30px;
+            font-size: 2rem;
+            text-align: center;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        .payment-method {
+            background: rgba(0, 0, 0, 0.3);
+            padding: 25px;
+            border-radius: 12px;
+            margin-bottom: 25px;
+            border-left: 4px solid var(--neon-orange);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .payment-method::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, 
+                transparent 0%, 
+                rgba(0, 180, 255, 0.05) 50%, 
+                transparent 100%);
+            animation: scanline 6s linear infinite;
+        }
+
+        .payment-instructions {
+            background: rgba(0, 0, 0, 0.3);
+            padding: 25px;
+            border-radius: 12px;
+            margin: 30px 0;
+            border-left: 4px solid var(--neon-green);
+        }
+
+        .payment-instructions ol {
+            padding-left: 20px;
+            line-height: 2;
+        }
+
+        .payment-instructions li {
+            margin-bottom: 15px;
+            position: relative;
+        }
+
+        .payment-instructions li::before {
+            content: '';
+            position: absolute;
+            left: -20px;
+            top: 12px;
+            width: 8px;
+            height: 8px;
+            background: var(--neon-blue);
+            border-radius: 50%;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .logo {
+                font-size: 2.5rem;
+            }
+            
+            .grid-container {
+                grid-template-columns: 1fr;
+            }
+            
+            .card {
+                padding: 25px;
+            }
+            
+            .modal-content {
+                padding: 30px 20px;
+            }
+        }
+    </style>
+    <link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@400;500;600;700&family=Montserrat:wght@300;400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <!-- Animated Background -->
+    <div id="particles-js"></div>
+
+    <div class="container">
+        <header>
+            <div class="logo">TRADERX FX</div>
+            <div class="tagline">Elite Trading Solutions</div>
+        </header>
+
+        <div class="performance-card">
+            <h2>LIVE PERFORMANCE METRICS</h2>
+            <div class="profit">$24,857.42</div>
+            <div class="growth">+15.3% This Month</div>
+            <div style="margin-top: 20px; color: var(--neon-blue);">@ Real-Time Market Execution</div>
+        </div>
+
+        <div class="grid-container">
+            <!-- Mentorship Programs -->
+            <div class="card">
+                <h3 class="card-title">Full Mentorship</h3>
+                <p class="card-desc">Complete SMC, Price Action & Spike Strategy mastery with 1-on-1 coaching</p>
+                <div class="card-price">$75</div>
+                <button class="btn" onclick="openModal('fullMentorship')">Enroll Now</button>
+            </div>
+
+            <div class="card">
+                <h3 class="card-title">Spike Strategy</h3>
+                <p class="card-desc">High-probability spike trading methodology with proven results</p>
+                <div class="card-price">$30</div>
+                <button class="btn" onclick="openModal('spikeStrategy')">Enroll Now</button>
+            </div>
+
+            <div class="card">
+                <h3 class="card-title">SMC Course</h3>
+                <p class="card-desc">Master Smart Money Concepts and institutional trading strategies</p>
+                <div class="card-price">$25</div>
+                <button class="btn" onclick="openModal('smcCourse')">Enroll Now</button>
+            </div>
+
+            <div class="card">
+                <h3 class="card-title">Price Action</h3>
+                <p class="card-desc">Advanced price action techniques for all market conditions</p>
+                <div class="card-price">$35</div>
+                <button class="btn" onclick="openModal('priceAction')">Enroll Now</button>
+            </div>
+
+            <!-- Signal Services -->
+            <div class="card">
+                <h3 class="card-title">Weekly Signals</h3>
+                <p class="card-desc">7 days of premium trade alerts with entry/exit points</p>
+                <div class="card-price">$15 <span>per week</span></div>
+                <button class="btn" onclick="openModal('weeklySignals')">Subscribe</button>
+            </div>
+
+            <div class="card">
+                <h3 class="card-title">Monthly Signals</h3>
+                <p class="card-desc">30 days of high-probability trade setups with support</p>
+                <div class="card-price">$40 <span>per month</span></div>
+                <button class="btn" onclick="openModal('monthlySignals')">Subscribe</button>
+            </div>
+        </div>
+
+        <div class="social-links">
+            <a href="https://tiktok.com/@traderxzw" class="social-icon tiktok" target="_blank"><i class="fab fa-tiktok"></i></a>
+            <a href="https://wa.me/263778652739" class="social-icon whatsapp" target="_blank"><i class="fab fa-whatsapp"></i></a>
+            <a href="https://www.instagram.com/traderx124" class="social-icon instagram" target="_blank"><i class="fab fa-instagram"></i></a>
+        </div>
+
+        <footer>
+            <p>CEO: Michael Tanatswa | +263 77 865 2739</p>
+            <p>Email: tanatswamichael93@gmail.com</p>
+            <p style="margin-top: 30px; opacity: 0.7;">© 2025 TRADERX FX. All rights reserved.</p>
+        </footer>
+    </div>
+
+    <!-- Payment Modals -->
+    <div id="fullMentorship" class="modal">
+        <div class="modal-content">
+            <span class="close-modal" onclick="closeModal('fullMentorship')">&times;</span>
+            <h2 class="modal-title">Complete Enrollment</h2>
+            <h3 style="color: var(--neon-orange); text-align: center; margin-bottom: 30px;">Full Mentorship - $75</h3>
+            
+            <div class="payment-method">
+                <h4 style="color: var(--neon-blue); margin-bottom: 15px;">Payment Method</h4>
+                <p><i class="fas fa-mobile-alt" style="color: var(--neon-green); margin-right: 10px;"></i> <strong>EcoCash</strong></p>
+                <p><i class="fas fa-phone" style="color: var(--neon-blue); margin-right: 10px;"></i> +263 77 865 2739</p>
+                <p><i class="fas fa-user" style="color: var(--neon-orange); margin-right: 10px;"></i> Michael Tanatswa</p>
+            </div>
+            
+            <div class="payment-instructions">
+                <h4 style="color: var(--neon-green); margin-bottom: 15px;">Payment Instructions</h4>
+                <ol>
+                    <li>Send <strong>$75</strong> via EcoCash to the number above</li>
+                    <li>Screenshot the payment confirmation</li>
+                    <li>WhatsApp the screenshot to <strong>+263 77 865 2739</strong></li>
+                    <li>Include your full name and "Full Mentorship"</li>
+                    <li>Access details sent within 24 hours</li>
+                </ol>
+            </div>
+            
+            <a href="https://wa.me/263778652739" class="btn" style="display: block; text-align: center; margin-top: 30px; text-decoration: none;">
+                <i class="fab fa-whatsapp"></i> Confirm Payment
+            </a>
+        </div>
+    </div>
+
+    <div id="spikeStrategy" class="modal">
+        <div class="modal-content">
+            <span class="close-modal" onclick="closeModal('spikeStrategy')">&times;</span>
+            <h2 class="modal-title">Complete Enrollment</h2>
+            <h3 style="color: var(--neon-orange); text-align: center; margin-bottom: 30px;">Spike Strategy - $30</h3>
+            
+            <div class="payment-method">
+                <h4 style="color: var(--neon-blue); margin-bottom: 15px;">Payment Method</h4>
+                <p><i class="fas fa-mobile-alt" style="color: var(--neon-green); margin-right: 10px;"></i> <strong>EcoCash</strong></p>
+                <p><i class="fas fa-phone" style="color: var(--neon-blue); margin-right: 10px;"></i> +263 77 865 2739</p>
+                <p><i class="fas fa-user" style="color: var(--neon-orange); margin-right: 10px;"></i> Michael Tanatswa</p>
+            </div>
+            
+            <div class="payment-instructions">
+                <h4 style="color: var(--neon-green); margin-bottom: 15px;">Payment Instructions</h4>
+                <ol>
+                    <li>Send <strong>$30</strong> via EcoCash to the number above</li>
+                    <li>Screenshot the payment confirmation</li>
+                    <li>WhatsApp the screenshot to <strong>+263 77 865 2739</strong></li>
+                    <li>Include your full name and "Spike Strategy"</li>
+                    <li>Access details sent within 24 hours</li>
+                </ol>
+            </div>
+            
+            <a href="https://wa.me/263778652739" class="btn" style="display: block; text-align: center; margin-top: 30px; text-decoration: none;">
+                <i class="fab fa-whatsapp"></i> Confirm Payment
+            </a>
+        </div>
+    </div>
+
+    <div id="weeklySignals" class="modal">
+        <div class="modal-content">
+            <span class="close-modal" onclick="closeModal('weeklySignals')">&times;</span>
+            <h2 class="modal-title">Complete Subscription</h2>
+            <h3 style="color: var(--neon-orange)
