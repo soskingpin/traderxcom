@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>TraderX - Forex Mentorship</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css ">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <style>
         :root {
@@ -102,7 +102,7 @@
         
         /* Hero Section */
         .hero {
-            background: linear-gradient(rgba(12, 27, 51, 0.9), rgba(12, 27, 51, 0.9)), url('https://images.unsplash.com/photo-1611974789855-9c2a0a7236a3?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80') no-repeat center center/cover;
+            background: linear-gradient(rgba(12, 27, 51, 0.9), rgba(12, 27, 51, 0.9)), url(' https://images.unsplash.com/photo-1611974789855-9c2a0a7236a3?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80') no-repeat center center/cover;
             color: white;
             padding: 100px 0;
             text-align: center;
@@ -606,9 +606,102 @@
                 font-size: 2rem;
             }
         }
+        
+        /* ===== INTRO ANIMATION ===== */
+        .intro-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: var(--dark);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            z-index: 9999;
+            overflow: hidden;
+        }
+        
+        #candlestickCanvas {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 1;
+        }
+        
+        .brand-reveal {
+            position: relative;
+            z-index: 10;
+            text-align: center;
+            padding: 20px;
+        }
+        
+        .brand-name {
+            font-size: clamp(3.5rem, 10vw, 7rem);
+            font-weight: 700;
+            margin-bottom: 2rem;
+            text-transform: uppercase;
+            letter-spacing: -0.05em;
+            color: transparent;
+            background: linear-gradient(90deg, var(--secondary), #FFB74D);
+            -webkit-background-clip: text;
+            background-clip: text;
+            background-size: 200% auto;
+            animation: shine 3s linear infinite;
+            font-family: 'Poppins', sans-serif;
+        }
+        
+        @keyframes shine {
+            to {
+                background-position: 200% center;
+            }
+        }
+        
+        .loading-bar {
+            width: 80%;
+            max-width: 400px;
+            height: 3px;
+            background: rgba(255, 152, 0, 0.1);
+            border-radius: 3px;
+            overflow: hidden;
+            position: relative;
+        }
+        
+        .loading-progress {
+            height: 100%;
+            width: 0;
+            background: linear-gradient(90deg, var(--secondary), #FFB74D);
+            transition: width 3.5s cubic-bezier(0.65, 0, 0.35, 1);
+        }
+        
+        .fade-out {
+            animation: fadeOut 0.8s ease-out forwards;
+        }
+        
+        @keyframes fadeOut {
+            to {
+                opacity: 0;
+                transform: scale(0.95);
+            }
+        }
     </style>
 </head>
 <body>
+    <!-- TRADERX INTRO ANIMATION -->
+    <div class="intro-overlay" id="introOverlay">
+        <canvas id="candlestickCanvas"></canvas>
+        <div class="brand-reveal">
+            <div class="brand-name">TRADERX</div>
+            <div class="loading-bar">
+                <div class="loading-progress" id="loadingProgress"></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Your existing website content starts here -->
     <header>
         <div class="container">
             <div class="header-content">
@@ -823,7 +916,7 @@
             <div class="join-container">
                 <h2>Create Your Trading Account Now</h2>
                 <p>Join thousands of successful traders who have transformed their trading journey with TraderX</p>
-                <a href="https://gowt.net/ib67216" class="btn btn-primary" style="font-size: 1.2rem; padding: 15px 40px;">
+                <a href=" https://gowt.net/ib67216 " class="btn btn-primary" style="font-size: 1.2rem; padding: 15px 40px;">
                     <i class="fas fa-user-plus"></i> Join Now
                 </a>
                 <p class="founder-credit">Founder Michael Tanatswa M</p>
@@ -855,12 +948,12 @@
                 <div class="footer-column">
                     <h3>Contact Us</h3>
                     <ul class="footer-links">
-                        <li><a href="https://wa.me/263778652739" target="_blank"><i class="fab fa-whatsapp"></i> WhatsApp: +263778652739</a></li>
+                        <li><a href="https://wa.me/263778652739 " target="_blank"><i class="fab fa-whatsapp"></i> WhatsApp: +263778652739</a></li>
                         <li><a href="tel:+263778652739"><i class="fas fa-phone"></i> Direct Call: +263778652739</a></li>
                         <li><a href="mailto:tanatswamichael93@gmail.com"><i class="fas fa-envelope"></i> Email: tanatswamichael93@gmail.com</a></li>
                         <li><a href="https://www.instagram.com/traderx124?igsh=YzljYTk1ODg3Zg==" target="_blank"><i class="fab fa-instagram"></i> Instagram: @traderx124</a></li>
-                        <li><a href="https://tiktok.com/@traderxzw" target="_blank"><i class="fab fa-tiktok"></i> TikTok: @traderxzw</a></li>
-                        <li><a href="https://whatsapp.com/channel/0029VasVRo6JUM2WChzBSd3S" target="_blank"><i class="fab fa-whatsapp"></i> WhatsApp Channel</a></li>
+                        <li><a href=" https://tiktok.com/@traderxzw " target="_blank"><i class="fab fa-tiktok"></i> TikTok: @traderxzw</a></li>
+                        <li><a href="https://whatsapp.com/channel/0029VasVRo6JUM2WChzBSd3S " target="_blank"><i class="fab fa-whatsapp"></i> WhatsApp Channel</a></li>
                     </ul>
                 </div>
                 
@@ -932,62 +1025,240 @@
     </div>
 
     <script>
-        // Payment Modal Functionality
-        const modal = document.getElementById('paymentModal');
-        const enrollBtns = document.querySelectorAll('.enroll-btn');
-        const coursePrice = document.getElementById('coursePrice');
-        const backBtn = document.getElementById('backBtn');
-        const whatsappBtn = document.getElementById('whatsappBtn');
-        const ecocashBtn = document.getElementById('ecocashBtn');
+        // Initialize intro animation
+        document.addEventListener('DOMContentLoaded', function() {
+            // Prevent scrolling during intro
+            document.body.style.overflow = 'hidden';
+            
+            // Initialize the intro
+            initIntro();
+            
+            // Your existing website JavaScript
+            const modal = document.getElementById('paymentModal');
+            const enrollBtns = document.querySelectorAll('.enroll-btn');
+            const coursePrice = document.getElementById('coursePrice');
+            const backBtn = document.getElementById('backBtn');
+            const whatsappBtn = document.getElementById('whatsappBtn');
+            const ecocashBtn = document.getElementById('ecocashBtn');
 
-        // Current course info
-        let currentCourse = '';
-        let currentPrice = '';
-        const whatsappNumber = '263778652739';
+            // Current course info
+            let currentCourse = '';
+            let currentPrice = '';
+            const whatsappNumber = '263778652739';
 
-        // Open modal when enroll button is clicked
-        enrollBtns.forEach(btn => {
-            btn.addEventListener('click', function() {
-                currentCourse = this.getAttribute('data-course');
-                currentPrice = this.getAttribute('data-price');
-                
-                // Update the course price in modal
-                coursePrice.textContent = currentPrice;
-                
-                // Show modal
-                modal.style.display = 'block';
-                document.body.style.overflow = 'hidden'; // Prevent scrolling
+            // Open modal when enroll button is clicked
+            enrollBtns.forEach(btn => {
+                btn.addEventListener('click', function() {
+                    currentCourse = this.getAttribute('data-course');
+                    currentPrice = this.getAttribute('data-price');
+                    
+                    // Update the course price in modal
+                    coursePrice.textContent = currentPrice;
+                    
+                    // Show modal
+                    modal.style.display = 'block';
+                    document.body.style.overflow = 'hidden'; // Prevent scrolling
+                });
+            });
+            
+            // Close modal when back button is clicked
+            backBtn.addEventListener('click', function() {
+                modal.style.display = 'none';
+                document.body.style.overflow = 'auto'; // Enable scrolling
+            });
+            
+            // Close modal when clicking outside of modal content
+            window.addEventListener('click', function(e) {
+                if (e.target === modal) {
+                    modal.style.display = 'none';
+                    document.body.style.overflow = 'auto';
+                }
+            });
+            
+            // WhatsApp button functionality
+            whatsappBtn.addEventListener('click', function() {
+                const message = `Hello TraderX, I am interested in the ${currentCourse} course priced at $${currentPrice}. My name is [Your Full Name].`;
+                const whatsappUrl = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(message)}`;
+                window.open(whatsappUrl, '_blank');
+            });
+
+            // EcoCash auto-dial button functionality
+            ecocashBtn.addEventListener('click', function(e) {
+                e.preventDefault();
+                const ecocashNumber = '0778652739';
+                const ecocashUrl = `tel:*153*1*1*${ecocashNumber}*${currentPrice}#`;
+                window.location.href = ecocashUrl;
             });
         });
-        
-        // Close modal when back button is clicked
-        backBtn.addEventListener('click', function() {
-            modal.style.display = 'none';
-            document.body.style.overflow = 'auto'; // Enable scrolling
-        });
-        
-        // Close modal when clicking outside of modal content
-        window.addEventListener('click', function(e) {
-            if (e.target === modal) {
-                modal.style.display = 'none';
-                document.body.style.overflow = 'auto';
-            }
-        });
-        
-        // WhatsApp button functionality
-        whatsappBtn.addEventListener('click', function() {
-            const message = `Hello TraderX, I am interested in the ${currentCourse} course priced at $${currentPrice}. My name is [Your Full Name].`;
-            const whatsappUrl = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(message)}`;
-            window.open(whatsappUrl, '_blank');
-        });
 
-        // EcoCash auto-dial button functionality
-        ecocashBtn.addEventListener('click', function(e) {
-            e.preventDefault();
-            const ecocashNumber = '0778652739';
-            const ecocashUrl = `tel:*153*1*1*${ecocashNumber}*${currentPrice}#`;
-            window.location.href = ecocashUrl;
-        });
+        function initIntro() {
+            const canvas = document.getElementById('candlestickCanvas');
+            const ctx = canvas.getContext('2d');
+            const loadingProgress = document.getElementById('loadingProgress');
+            const introOverlay = document.getElementById('introOverlay');
+            
+            // Set canvas dimensions
+            function resizeCanvas() {
+                const dpr = window.devicePixelRatio || 1;
+                const rect = canvas.getBoundingClientRect();
+                
+                canvas.width = rect.width * dpr;
+                canvas.height = rect.height * dpr;
+                ctx.scale(dpr, dpr);
+                
+                drawChartGrid();
+            }
+            
+            // Draw chart grid
+            function drawChartGrid() {
+                ctx.clearRect(0, 0, canvas.width, canvas.height);
+                
+                const width = canvas.clientWidth;
+                const height = canvas.clientHeight;
+                const gridColor = 'rgba(255, 255, 255, 0.03)';
+                
+                // Vertical grid lines
+                ctx.strokeStyle = gridColor;
+                ctx.lineWidth = 1;
+                for (let x = 0; x < width; x += width / 8) {
+                    ctx.beginPath();
+                    ctx.moveTo(x, 0);
+                    ctx.lineTo(x, height);
+                    ctx.stroke();
+                }
+                
+                // Horizontal grid lines
+                for (let y = 0; y < height; y += height / 5) {
+                    ctx.beginPath();
+                    ctx.moveTo(0, y);
+                    ctx.lineTo(width, y);
+                    ctx.stroke();
+                }
+            }
+            
+            // Candlestick parameters
+            const candleWidth = 16;
+            const candleGap = 6;
+            let candleCount = Math.floor(canvas.clientWidth / (candleWidth + candleGap)) + 10;
+            let offsetX = 0;
+            let candles = [];
+            let lastClose = 1.0800;
+            
+            // Generate candlesticks
+            function generateCandle(prevClose) {
+                const pipSize = 0.0001;
+                const trendBias = Math.random() > 0.6 ? 1 : -1;
+                
+                let open = prevClose + (Math.random() - 0.5) * 5 * pipSize;
+                let close = open + trendBias * (5 + Math.random() * 15) * pipSize;
+                let high = Math.max(open, close) + Math.random() * 8 * pipSize;
+                let low = Math.min(open, close) - Math.random() * 8 * pipSize;
+                
+                // Ensure minimum candle body
+                if (Math.abs(close - open) < 3 * pipSize) {
+                    close = open + (Math.random() > 0.5 ? 1 : -1) * 3 * pipSize;
+                }
+                
+                return {
+                    open: parseFloat(open.toFixed(4)),
+                    close: parseFloat(close.toFixed(4)),
+                    high: parseFloat(high.toFixed(4)),
+                    low: parseFloat(low.toFixed(4))
+                };
+            }
+            
+            // Initialize candles
+            for (let i = 0; i < candleCount; i++) {
+                let candle = generateCandle(lastClose);
+                lastClose = candle.close;
+                candles.push(candle);
+            }
+            
+            // Draw candlestick
+            function drawCandle(x, candle) {
+                const isBullish = candle.close > candle.open;
+                const bodyTop = Math.min(candle.open, candle.close);
+                const bodyBottom = Math.max(candle.open, candle.close);
+                const scaleY = 8000;
+                
+                // Calculate pixel positions
+                const height = canvas.clientHeight;
+                const bodyHeight = (bodyBottom - bodyTop) * scaleY;
+                const bodyY = height * 0.7 - (bodyTop - 1.0750) * scaleY;
+                const wickTop = height * 0.7 - (candle.high - 1.0750) * scaleY;
+                const wickBottom = height * 0.7 - (candle.low - 1.0750) * scaleY;
+                
+                // Colors based on your site's color scheme
+                const bodyColor = isBullish ? 'rgba(255, 152, 0, 0.9)' : 'rgba(13, 71, 161, 0.9)';
+                const wickColor = isBullish ? 'rgba(255, 152, 0, 0.95)' : 'rgba(13, 71, 161, 0.95)';
+                
+                // Draw wick
+                ctx.beginPath();
+                ctx.strokeStyle = wickColor;
+                ctx.lineWidth = 2;
+                ctx.moveTo(x + candleWidth / 2, wickTop);
+                ctx.lineTo(x + candleWidth / 2, wickBottom);
+                ctx.stroke();
+                
+                // Draw body
+                ctx.fillStyle = bodyColor;
+                ctx.fillRect(x, bodyY, candleWidth, bodyHeight);
+                
+                // Body highlight
+                ctx.strokeStyle = isBullish ? 'rgba(255, 183, 77, 0.7)' : 'rgba(12, 27, 51, 0.7)';
+                ctx.lineWidth = 1;
+                ctx.strokeRect(x + 0.5, bodyY + 0.5, candleWidth - 1, bodyHeight - 1);
+            }
+            
+            // Animation loop
+            function animate() {
+                drawChartGrid();
+                
+                // Slow down the movement
+                offsetX -= 0.6;
+                
+                // Cycle candles when needed
+                if (Math.abs(offsetX) > (candleWidth + candleGap)) {
+                    offsetX += candleWidth + candleGap;
+                    candles.shift();
+                    candles.push(generateCandle(candles[candles.length - 1].close));
+                }
+                
+                // Draw all candles with offset
+                for (let i = 0; i < candles.length; i++) {
+                    let x = i * (candleWidth + candleGap) + offsetX;
+                    if (x > -candleWidth && x < canvas.clientWidth) {
+                        drawCandle(x, candles[i]);
+                    }
+                }
+                
+                requestAnimationFrame(animate);
+            }
+            
+            // Start the intro sequence
+            function startIntroSequence() {
+                // Start loading bar
+                setTimeout(() => {
+                    loadingProgress.style.width = '100%';
+                }, 1000);
+                
+                // Wait for animations to complete
+                setTimeout(() => {
+                    // Fade out overlay
+                    introOverlay.classList.add('fade-out');
+                    setTimeout(() => {
+                        introOverlay.style.display = 'none';
+                        document.body.style.overflow = 'auto';
+                    }, 800);
+                }, 4000);
+            }
+            
+            // Initialize and start animations
+            resizeCanvas();
+            window.addEventListener('resize', resizeCanvas);
+            animate();
+            startIntroSequence();
+        }
     </script>
 </body>
 </html>
